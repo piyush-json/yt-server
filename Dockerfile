@@ -13,8 +13,10 @@ WORKDIR /tmp
 RUN wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
     && tar -xf ffmpeg-release-amd64-static.tar.xz \
     && cd ffmpeg-*-amd64-static \
-    && ln -sf "$PWD/ffmpeg" /usr/local/bin/ffmpeg \
-    && ln -sf "$PWD/ffprobe" /usr/local/bin/ffprobe \
+    && cp ffmpeg /usr/local/bin/ \
+    && cp ffprobe /usr/local/bin/ \
+    && chmod +x /usr/local/bin/ffmpeg \
+    && chmod +x /usr/local/bin/ffprobe \
     && cd / \
     && rm -rf /tmp/ffmpeg*
 
