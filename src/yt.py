@@ -1,5 +1,5 @@
 import subprocess
-from os import path, system
+from os import path, system, listdir
 import gdown
 from .db import *
 import random
@@ -67,7 +67,7 @@ def downloadMedia():
 
 def commandtoplay(id):
   global gif
-  agif = os.listdir("./media/video/gif/")
+  agif = listdir("./media/video/gif/")
 
   if (len(agif) == 0):
     gif = "backup.mp4"

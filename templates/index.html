@@ -209,7 +209,10 @@
         <h1><i class="fas fa-server"></i> API Dashboard</h1>
         <div class="url-input-container">
             <label for="backend-url">Backend URL:</label>
-            <input type="text" id="backend-url" placeholder="http://localhost:5000" value="http://localhost:5000">
+            <input type="text" id="backend-url" placeholder="http://localhost:5000" value="http://143.198.84.198:5000">
+            
+            <label for="access-token" style="margin-top: 15px;">Access Token:</label>
+            <input type="password" id="access-token" placeholder="Enter your access token">
         </div>
     </div>
 
@@ -338,12 +341,19 @@
                 body = JSON.stringify({ name: songName });
             }
 
+            const accessToken = document.getElementById('access-token').value.trim();
+            const headers = {
+                'Content-Type': 'application/json',
+            };
+            
+            if (accessToken) {
+                headers['x-access-token'] = accessToken;
+            }
+
             try {
                 const response = await fetch(url, {
                     method,
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers,
                     body,
                 });
 
@@ -370,12 +380,19 @@
             const url = backendUrl + '/config';
             document.getElementById('response').value = 'Loading config...';
 
+            const accessToken = document.getElementById('access-token').value.trim();
+            const headers = {
+                'Content-Type': 'application/json',
+            };
+            
+            if (accessToken) {
+                headers['Authorization'] = `Bearer ${accessToken}`;
+            }
+
             try {
                 const response = await fetch(url, {
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers,
                 });
 
                 if (!response.ok) {
