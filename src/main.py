@@ -2,7 +2,7 @@ from .db import db
 from .yt import downloadMedia, stream
 from threading import Thread
 
-media_thread = Thread(target=downloadMedia)
+mediaThread = Thread(target=downloadMedia)
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
   print(f"Ad Interval: {db.dget('config', 'adInterval')}")
   print(f"Play Ad: {db.dget('config', 'playAd')}")
 
-  media_thread.start()
+  mediaThread.start()
 
   stream()
   print("Exiting application...")

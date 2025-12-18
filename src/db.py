@@ -1,5 +1,7 @@
-from config.settings import DB_PATH
 import pickledb
+
+# Path to the database file
+DB_PATH = 'db/data.db'
 
 db = pickledb.load(DB_PATH, auto_dump=True)
 
