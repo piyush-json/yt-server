@@ -3,15 +3,15 @@ from src import yt
 
 
 def run(songs):
-  for i in songs:
-    try:
-      cmd = yt.commandtoplay(i)
-      os.system(cmd)
-    except Exception as e:
-      print(e)
-      print("error playing song")
+    for song in songs:
+        try:
+            cmd = yt.commandtoplay(song)
+            os.system(cmd)
+        except Exception as e:
+            print(f"Error playing song {song}: {e}")
 
 
-songs = list(map(str, range(1, 11)))
-while True:
-  run(songs)
+if __name__ == "__main__":
+    songs = [str(i+1) for i in range(10)]
+    while True:
+        run(songs)

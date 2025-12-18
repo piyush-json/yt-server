@@ -2,18 +2,21 @@ from .db import db
 from .yt import downloadMedia, stream
 from threading import Thread
 
-mediaThread = Thread(target=downloadMedia, args=())
+media_thread = Thread(target=downloadMedia)
 
 
 def main():
-  global ytthread
-  print(db.dget('config', 'command'))
-  print(db.dget('config', 'backupCommand'))
-  print('ad adInterval' + str(db.dget('config', 'adInterval')))
-  print('ad  playing' + str(db.dget('config', 'playAd')))
-  mediaThread.start()
+  print("Starting application...")
+  print(f"Command: {db.dget('config', 'command')}")
+  print(f"Backup Command: {db.dget('config', 'backupCommand')}")
+  print(f"Ad Interval: {db.dget('config', 'adInterval')}")
+  print(f"Play Ad: {db.dget('config', 'playAd')}")
+
+  media_thread.start()
 
   stream()
-  print('exiting script')
-  ytthread = None
-  return
+  print("Exiting application...")
+
+
+if __name__ == "__main__":
+  main()

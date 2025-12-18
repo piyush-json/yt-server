@@ -5,8 +5,8 @@
 __pycache__
 /media/zip/*
 /media/ad/*
-index.html
 data.db
 db
 .env
 venv
+/.vscode/
